@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dream of lotto</title>
+    <style>
+        div{position: absolute;width: 300px;height: 100px;top: 50%;left: 50%;transform: translate(-50%,-50%);border: 1px solid black;font-size: 30px;padding-top: 45px;padding-left: 82px;}
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let nums=[]
+        for (let i = 1; i <= 45; i++) {
+            nums.push(i)
+        }
+        nums.sort(function () {
+            return Math.random()-0.5
+        })
+        let loto=nums.slice(0,6)
+        loto.sort(function (a,b) {
+            return a-b
+        })
+        document.querySelector('div').innerText=loto
+    </script>
+</body>
+</html>
