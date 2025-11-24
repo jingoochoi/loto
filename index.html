@@ -5,24 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dream of lotto</title>
     <style>
-        div{position: absolute;width: 300px;height: 100px;top: 50%;left: 50%;transform: translate(-50%,-50%);border: 1px solid black;font-size: 30px;padding-top: 45px;padding-left: 82px;}
+        body{background-color: lavender;}
+        .wrap{position: absolute;width: 300px;height: 100px;top: 50%;left: 50%;transform: translate(-50%,-50%);border: 1px solid gray;display: flex;justify-content: space-evenly;align-items: center;font-size: 20px;background-color: #fff;}
+        .can1{width: 40px;height: 40px;display: flex;justify-content: center;align-items: center;border-radius: 50%;background-color: gold;}
+        .can2{width: 40px;height: 40px;display: flex;justify-content: center;align-items: center;border-radius: 50%;background-color: gold;}
+        .can3{width: 40px;height: 40px;display: flex;justify-content: center;align-items: center;border-radius: 50%;background-color: gold;}
+        .can4{width: 40px;height: 40px;display: flex;justify-content: center;align-items: center;border-radius: 50%;background-color: gold;}
+        .can5{width: 40px;height: 40px;display: flex;justify-content: center;align-items: center;border-radius: 50%;background-color: gold;}
+        .can6{width: 40px;height: 40px;display: flex;justify-content: center;align-items: center;border-radius: 50%;background-color: gold;}
     </style>
 </head>
 <body>
-    <div></div>
+    <div class="wrap">
+        <div class="can1"></div>
+        <div class="can2"></div>
+        <div class="can3"></div>
+        <div class="can4"></div>
+        <div class="can5"></div>
+        <div class="can6"></div>
+    </div>
     <script>
         let nums=[]
         for (let i = 1; i <= 45; i++) {
             nums.push(i)
         }
-        nums.sort(function () {
-            return Math.random()-0.5
-        })
+        for (let i = nums.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+        }
         let loto=nums.slice(0,6)
         loto.sort(function (a,b) {
             return a-b
         })
-        document.querySelector('div').innerText=loto
+        for (let i = 0; i < loto.length; i++) {
+            document.querySelector(`.can${i+1}`).innerHTML=loto[i]
+            if (loto[i]>10&loto[i]<21) {
+                document.querySelector(`.can${i+1}`).style.backgroundColor='skyblue'
+            }
+            if (loto[i]>20&loto[i]<31) {
+                document.querySelector(`.can${i+1}`).style.backgroundColor='pink'
+            }
+            if (loto[i]>30&loto[i]<41) {
+                document.querySelector(`.can${i+1}`).style.backgroundColor='#ccc'
+            }
+            if (loto[i]>40) {
+                document.querySelector(`.can${i+1}`).style.backgroundColor='lightgreen'
+            }
+        }
     </script>
 </body>
 </html>
